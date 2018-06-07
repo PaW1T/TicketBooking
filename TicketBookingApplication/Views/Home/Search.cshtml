@@ -1,0 +1,111 @@
+﻿
+
+@model IEnumerable<TicketBookingApplication.DAL.Domain.Flight>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h1>&nbsp;</h1>
+<div class="container">
+    <div class="row">
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @((string)ViewBag.Error)
+                @Html.ActionLink("На главную", "Index", null, new { @class = "btn" })
+            </div>
+        }
+        else
+        {
+            if (Model.Count() != 0)
+            {
+                <ul class="list-group">
+                    @foreach (var flight in Model)
+                    {
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h3>Рейс: @flight.DepartureCity.Name - @flight.ArrivalCity.Name</h3>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-info btn-lg" type="button" data-toggle="modal" data-target="#myModal" style="margin-top:15px; background:#14c91c;">Купить билет</button>
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="panel-heading">Оформление заказа</div>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <ol class="rounded">
+                                                        <li><a href="#">Контактные данные<input type="email" class="form-control" id="inputEmail" placeholder="Введите email"></a></li>
+                                                        <li>
+                                                            <a href="#">
+                                                                Информация о пассажире
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        <input type="text" class="form-control" id="inputFIO" placeholder="Фамилия">
+                                                                        <input type="text" class="form-control" id="inputFIO" placeholder="Имя">
+                                                                        <input type="text" class="form-control" id="inputFIO" placeholder="Отчество">
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                Способ оплаты
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        <div class="form-group">
+                                                                            <div class="btn-group" data-toggle="buttons">
+                                                                                <label class="btn btn-primary active">
+                                                                                    @Html.RadioButton("Pay", "BankCard", true,
+                                                                                       new { id = "IsBankCardPay" }) Банковской картой
+                                                                                </label>
+                                                                                <label class="btn btn-primary">
+                                                                                    @Html.RadioButton("Pay", "Cash",
+                                                                                    new { id = "IsCashPay" }) Наличными в кассе
+                                                                                </label>
+                                                                            </div>
+                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="container">
+                                                        <div class="row" >
+                                                            <div class="footer" >
+                                                            <button type="button" class="btn btn-info">Купить</button>
+                                                            <button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <h4>Время отправки: @flight.DepartureTime.ToString(@"MM\/dd\/yyyy HH:mm")</h4>
+                            <h4>Время прибытия: @flight.ArivalTime.ToString(@"MM\/dd\/yyyy HH:mm")</h4>
+                            <h5>Летим на самолете @flight.Airplane.Name от компании @flight.Airplane.CompanyName</h5>
+                        </li>
+                        <h3>&nbsp;</h3>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-warning">По указаным параметрам маршруты не найдены @Html.ActionLink("На главную", "Index", null, new { @class = "btn" }) </div>
+            }
+        }
+
+
+
+    </div>
+</div>

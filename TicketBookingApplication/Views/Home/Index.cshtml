@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TicketBookingApplication.DAL.Domain.City>
+<div class="container">
+    <h1>&nbsp;</h1>
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+        <div class="my-flex-container">
+            <div class="row">
+                <div class="my-flex-block">
+                    <div class="col-md-4">
+                        <select class="form-control shadow" name="departureCityId" title="City">
+                            <option value="-1">Выберите город отправления</option>
+                            @foreach (var city in Model)
+                            {
+                                <option value="@city.Id">@city.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control shadow" name="arrivalCityId" title="City">
+                            <option value="-1">Выберите город прибытия</option>
+                            @foreach (var city in Model)
+                            {
+                                <option value="@city.Id">@city.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="date" name="departureDate" type="Date" class="form-control">
+                    </div>
+                </div>
+
+            </div>
+            <div class="my-flex-block" style="
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+          ">
+                <button type="submit" class="btn btn-success" style="
+        margin-left: -75px;
+        width: 150px;
+        height: 75px;
+        top: 50%;
+        left: 50%;
+        margin-top: 25px;
+        border-radius: 24px;
+        box-shadow: 0 3px 0 0 #007299;
+        ">
+                    Найти билеты
+                </button>
+            </div>
+
+        </div>
+    }
+</div>

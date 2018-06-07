@@ -1,0 +1,100 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#date {
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    width: 100%
+}
+
+.shadow :focus {
+    box-shadow: 0 3px 0 0 green;
+}
+#myModal .rounded {
+    counter-reset: li;
+    list-style: none;
+    font: 14px "Trebuchet MS", "Lucida Sans";
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+    #myModal .rounded a {
+        position: relative;
+        display: block;
+        padding: .4em .4em .4em 2em;
+        text-align: left;
+        margin: .5em 0;
+        background: #DAD2CA;
+        color: #444;
+        text-decoration: none;
+        border-radius: .3em;
+        transition: .3s ease-out;
+    }
+
+        #myModal .rounded a:hover {
+            background: #e2e7ff;
+        }
+
+            #myModal .rounded a:hover:before {
+                transform: rotate(360deg);
+            }
+
+        #myModal .rounded a:before {
+            content: counter(li);
+            counter-increment: li;
+            position: absolute;
+            left: -1em;
+            top: 30%;
+            margin-top: -1em;
+            background: #38ebc3;
+            height: 2em;
+            width: 2em;
+            line-height: 1.5em;
+            border: .3em solid white;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 2em;
+            transition: all .3s ease-out;
+        }
+
+
+.modal-content {
+    background: #f0fffb;
+}
+
+#myModal .footer {
+    text-align: center;
+}
+
+#registerLink {
+    text-decoration: overline;
+    color:black;
+}
+#loginLink {
+    text-decoration: overline;
+    color: black;
+}
